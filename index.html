@@ -26,7 +26,7 @@
       margin: 0;
       animation: fadeInDown 1s ease;
     }
-    /* Стили для каждого раздела-карточки */
+    /* Стили для каждой карточки (раздела) */
     section {
       background: #fff;
       border-radius: 12px;
@@ -38,7 +38,7 @@
     }
     section:hover {
       transform: translateY(-3px);
-      box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
     }
     section h2 {
       font-size: 2em;
@@ -63,7 +63,7 @@
       position: relative;
       padding-left: 25px;
       text-align: justify;
-      margin-bottom: 10px; /* уменьшенные отступы */
+      margin-bottom: 10px;
     }
     .bullet-paragraph::before {
       content: "•";
@@ -73,7 +73,7 @@
       font-weight: bold;
       color: #000;
     }
-    /* Стили для списков – точка и жирный лейбл */
+    /* Стили для списков */
     .bullet-list {
       list-style: none;
       padding: 0;
@@ -81,7 +81,7 @@
     .bullet-list li {
       position: relative;
       padding-left: 25px;
-      margin-bottom: 8px; /* уменьшенные отступы */
+      margin-bottom: 8px;
       text-align: justify;
     }
     .bullet-list li::before {
@@ -102,25 +102,29 @@
     .organizer p {
       margin: 4px 0;
     }
-    /* Таблица для раздела «Умельцы организации» */
-    .person-table {
-      width: 100%;
-      border-collapse: collapse;
+    /* Раздел «Умельцы организации» - адаптивная карточка с флекс‑контейнером */
+    .persons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
       margin-top: 20px;
     }
-    .person-table td {
-      border: 1px solid #eee;
+    .person {
+      background: #f9f9f9;
+      border-radius: 10px;
       padding: 10px;
-      vertical-align: top;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+      flex: 1 1 calc(33.33% - 20px);
+      max-width: 250px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
-    .person-table td:hover {
+    .person:hover {
       transform: scale(1.02);
     }
-    .person-img {
+    .person img {
       width: 100%;
-      max-width: 150px;
       height: auto;
       border-radius: 50%;
       margin-bottom: 10px;
@@ -142,7 +146,7 @@
     footer a:hover {
       border-bottom: 1px solid #000;
     }
-    /* Класс для скрытого содержимого */
+    /* Класс для скрытия содержимого */
     .hidden {
       display: none;
     }
@@ -168,11 +172,15 @@
       section h2 {
         font-size: 1.5em;
       }
-      .person-img {
-        max-width: 120px;
+      .persons {
+        flex-direction: column;
       }
-      .person-table td {
-        padding: 8px;
+      .person {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      .bullet-paragraph, .bullet-list li {
+        padding-left: 20px;
       }
     }
   </style>
@@ -318,34 +326,30 @@
     </div>
   </section>
 
-  <!-- Раздел 10: Умельцы организации -->
+  <!-- Раздел 10: Умельцы организации (адаптивный флекс‑контейнер) -->
   <section id="section10">
     <h2 class="toggle-header"><i class="fas fa-users"></i> Умельцы организации</h2>
-    <div class="section-content">
-      <table class="person-table">
-        <tr>
-          <td>
-            <img src="data:image/webp;base64,UklGRioCAABXRUJQVlA4IB4CAACwGACdASq4ALkAPp1MokslpKOhqF8YKLATiWlu3V/kqNZJ2gHYjKlCgci9VKPR///mf/kQ9tE8u2WaJ5KH+pC7Lh0p4aRkwGhPPrcPbplDuHNze+QXRhZWJc9qXhC6U2V+cty9lj6yoKrsjG8geCrPytCvTeEhR/Hd8Vl8hdy818YVRrM0TgggQHngWe2MFz0I9hpTWhYX6d8IPN/THTV5XAWp5bxijQv0tL0LZiqjpiAvB9FSTtFirLmho0k/GYoaxj1/8tHZ5rmmG/MAIAD+9xwAFDf0bgvdhNVBNMIZmTJP4hNOEz1munUItmicS5mX+K4Flg1fOyAMS4L8OlmXxL5zmxuiuvmlvpbaTQhWjQgJeiYpf8NZdBS6Aje0uenoFMiSSiLbIZEH8bsaTWOgvClHwLXQVf7fT9XWOSpXazd6MDbTdyNmPChcoaK/o3fZNdg3X+0UV6ltGisGqWO7Ffk7RHt1cr199h12Qjb+asRoLGvvWpX8aV8vryACURfv5iAwV86oqsfsOLFOUcyVISkG+QShysAJtU3IwnT3qa9M6bHQYHan31lJJrnaR7DTBhxwnBo/XD8nLz4CQa05CEXi1aaxL3eLTDWOSxAiHLRrW6NyulF6v1UfodV9yOf4or0gM7rbJQxSjLLfvtomnF7Y4bc//ANGece8Rn2V4cSCTkkMNsrCEACUjrii4A78AhIT7EGyxD1xnYAAAA==" alt="Паша" class="person-img">
-            <p><strong>Паша -</strong> Помимо того, что он организатор, ещё он и умелец С.Р.У. Он учит своих умельцев и продвигает организацию. В организации он получает незабываемый опыт. Паша – умелец Архиватор перемен.</p>
-          </td>
-          <td>
-            <img src="data:image/webp;base64,UklGRioCAABXRUJQVlA4IB4CAACwGACdASq4ALkAPp1MokslpKOhqF8YKLATiWlu3V/kqNZJ2gHYjKlCgci9VKPR///mf/kQ9tE8u2WaJ5KH+pC7Lh0p4aRkwGhPPrcPbplDuHNze+QXRhZWJc9qXhC6U2V+cty9lj6yoKrsjG8geCrPytCvTeEhR/Hd8Vl8hdy818YVRrM0TgggQHngWe2MFz0I9hpTWhYX6d8IPN/THTV5XAWp5bxijQv0tL0LZiqjpiAvB9FSTtFirLmho0k/GYoaxj1/8tHZ5rmmG/MAIAD+9xwAFDf0bgvdhNVBNMIZmTJP4hNOEz1munUItmicS5mX+K4Flg1fOyAMS4L8OlmXxL5zmxuiuvmlvpbaTQhWjQgJeiYpf8NZdBS6Aje0uenoFMiSSiLbIZEH8bsaTWOgvClHwLXQVf7fT9XWOSpXazd6MDbTdyNmPChcoaK/o3fZNdg3X+0UV6ltGisGqWO7Ffk7RHt1cr199h12Qjb+asRoLGvvWpX8aV8vryACURfv5iAwV86oqsfsOLFOUcyVISkG+QShysAJtU3IwnT3qa9M6bHQYHan31lJJrnaR7DTBhxwnBo/XD8nLz4CQa05CEXi1aaxL3eLTDWOSxAiHLRrW6NyulF6v1UfodV9yOf4or0gM7rbJQxSjLLfvtomnF7Y4bc//ANGece8Rn2V4cSCTkkMNsrCEACUjrii4A78AhIT7EGyxD1xnYAAAA==" alt="Ваня" class="person-img">
-            <p><strong>Ваня -</strong> Один из умельцев. Он мастер оперативной координации, создающий механизмы, о которых говорят с восхищением. Ему 19 лет, и он в будущем будет программистом. Сейчас он учится в нашей организации, благодаря которой уже реализовал первые проекты. Ваня также имеет должность — умелец Дружинник С.Р.У.</p>
-          </td>
-          <td>
-            <img src="https://th.bing.com/th/id/OIP.BaBXb0nATH9fSWGCzwaT2gHaHa?w=188&h=188&c=7&r=0&o=7&pid=1.7&rm=3" alt="Полина" class="person-img">
-            <p><strong>Полина -</strong> Юный умелец и мастер аналитики, способная видеть скрытые закономерности, превращая данные в ценные решения для С.Р.У. Ей 24 года, она работает юристом и учится, получая огромный опыт. У Полины есть парень, а организация обеспечивает ей наилучшее будущее. Она занимает должность — умелец Дружинник С.Р.У.</p>
-          </td>
-          <td>
-            <img src="https://th.bing.com/th/id/OIP.BaBXb0nATH9fSWGCzwaT2gHaHa?w=188&h=188&c=7&r=0&o=7&pid=1.7&rm=3" alt="Галина" class="person-img">
-            <p><strong>Галина -</strong> Тоже умелец организации. Она блестящий специалист, чья точность и интуиция позволяют находить нестандартные решения для сложных задач. Все умельцы желают ей удачи, и в будущем она получит самый незабываемый опыт. Галина – умелец Архиватор перемен.</p>
-          </td>
-          <td>
-            <img src="data:image/webp;base64,UklGRioCAABXRUJQVlA4IB4CAACwGACdASq4ALkAPp1MokslpKOhqF8YKLATiWlu3V/kqNZJ2gHYjKlCgci9VKPR///mf/kQ9tE8u2WaJ5KH+pC7Lh0p4aRkwGhPPrcPbplDuHNze+QXRhZWJc9qXhC6U2V+cty9lj6yoKrsjG8geCrPytCvTeEhR/Hd8Vl8hdy818YVRrM0TgggQHngWe2MFz0I9hpTWhYX6d8IPN/THTV5XAWp5bxijQv0tL0LZiqjpiAvB9FSTtFirLmho0k/GYoaxj1/8tHZ5rmmG/MAIAD+9xwAFDf0bgvdhNVBNMIZmTJP4hNOEz1munUItmicS5mX+K4Flg1fOyAMS4L8OlmXxL5zmxuiuvmlvpbaTQhWjQgJeiYpf8NZdBS6Aje0uenoFMiSSiLbIZEH8bsaTWOgvClHwLXQVf7fT9XWOSpXazd6MDbTdyNmPChcoaK/o3fZNdg3X+0UV6ltGisGqWO7Ffk7RHt1cr199h12Qjb+asRoLGvvWpX8aV8vryACURfv5iAwV86oqsfsOLFOUcyVISkG+QShysAJtU3IwnT3qa9M6bHQYHan31lJJrnaR7DTBhxwnBo/XD8nLz4CQa05CEXi1aaxL3eLTDWOSxAiHLRrW6NyulF6v1UfodV9yOf4or0gM7rbJQxSjLLfvtomnF7Y4bc//ANGece8Rn2V4cSCTkkMNsrCEACUjrii4A78AhIT7EGyxD1xnYAAAA==" alt="Глеб" class="person-img">
-            <p><strong>Глеб -</strong> Умелец Дружинник С.Р.У. Он творческий новатор, прокладывающий новые пути и разрабатывающий инновационные механизмы. Пока он только начинает свой путь, но несмотря на замечания, в будущем его сделают профессиональным умельцем с незабываемым опытом.</p>
-          </td>
-        </tr>
-      </table>
+    <div class="section-content persons">
+      <div class="person">
+        <img src="https://drive.google.com/uc?export=view&id=16Pw5q61F9scwcpsHWr_4ZRGV14hD9QCO" alt="Паша">
+        <p><strong>Паша -</strong> Помимо того, что он организатор, ещё он и умелец С.Р.У. Он учит своих умельцев и продвигает организацию. В организации он получает незабываемый опыт. Паша – умелец Архиватор перемен.</p>
+      </div>
+      <div class="person">
+        <img src="https://drive.google.com/uc?export=view&id=16Rak4XAZJK3KD5AqXv8EUbhxBhxP7n3Y" alt="Ваня">
+        <p><strong>Ваня -</strong> Один из умельцев. Он мастер оперативной координации, создающий механизмы, о которых говорят с восхищением. Ему 19 лет, и он в будущем будет программистом. Сейчас он учится в нашей организации, благодаря которой уже реализовал первые проекты. Ваня также имеет должность — умелец Дружинник С.Р.У.</p>
+      </div>
+      <div class="person">
+        <img src="https://drive.google.com/uc?export=view&id=16Q0RNxvkDjwTCiErZ3hA7BQoVlKxIFKd" alt="Полина">
+        <p><strong>Полина -</strong> Юный умелец и мастер аналитики, способная видеть скрытые закономерности, превращая данные в ценные решения для С.Р.У. Ей 24 года, она работает юристом и учится, получая огромный опыт. У Полины есть парень, а организация обеспечивает ей наилучшее будущее. Она занимает должность — умелец Дружинник С.Р.У.</p>
+      </div>
+      <div class="person">
+        <img src="https://drive.google.com/uc?export=view&id=16Q0RNxvkDjwTCiErZ3hA7BQoVlKxIFKd" alt="Галина">
+        <p><strong>Галина -</strong> Тоже умелец организации. Она блестящий специалист, чья точность и интуиция позволяют находить нестандартные решения для сложных задач. Все умельцы желают ей удачи, и в будущем она получит незабываемый опыт. Галина – умелец Архиватор перемен.</p>
+      </div>
+      <div class="person">
+        <img src="https://drive.google.com/uc?export=view&id=16Rak4XAZJK3KD5AqXv8EUbhxBhxP7n3Y" alt="Глеб">
+        <p><strong>Глеб -</strong> Умелец Дружинник С.Р.У. Он творческий новатор, прокладывающий новые пути и разрабатывающий инновационные механизмы. Пока он только начинает свой путь, но, несмотря на замечания, в будущем его сделают профессиональным умельцем с незабываемым опытом.</p>
+      </div>
     </div>
   </section>
 
@@ -360,13 +364,15 @@
     </div>
   </section>
 
-  <!-- Раздел 12: Контактная информация -->
+  <!-- Раздел 12: Контактная нформация -->
   <section id="section12">
     <h2 class="toggle-header"><i class="fas fa-envelope"></i> Контактная нформация</h2>
     <div class="section-content">
       <p>
         Vertex Dynamics: <a href="https://comwebsite.github.io/vertex-dynamics/" target="_blank">наша корпорация</a><br>
         Discord server: <a href="https://discord.gg/JgG74y5h4G" target="_blank">присоединиться к серверу</a>
+      </p>
+      <p>
         Электронная почта организации: <a href="mailto:communityofdevelopingcraftsmen@gmail.com">communityofdevelopingcraftsmen@gmail.com</a><br>
         Копилот: <a href="https://copilot.microsoft.com/?setlang=ru" target="_blank">copilot.microsoft.com</a><br>
         ЧатГПТ: <a href="https://openai.com/chatgpt/overview/" target="_blank">openai.com/chatgpt</a>
