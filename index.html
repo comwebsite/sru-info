@@ -1,384 +1,255 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Содружество Развивающихся Умельцев</title>
-  <!-- Подключаем Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVTOzMZ5RimK7rjCH2Pb9f8sGrF+gOrpFwXSnV9uYZVmHyKH7bB1K7y2DcH1Z8H8W8ldBRf2MiP4eW+RmS2H9Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    /* Базовые стили – современный минимализм */
-    body {
-      background-color: #fff;
-      color: #000;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0f2c, #0e1d3a);
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
+      padding: 0;
+      overflow-x: hidden;
     }
+
     header {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      padding: 20px;
       text-align: center;
-      padding: 30px 10px;
+      box-shadow: 0 4px 10px rgba(0, 255, 255, 0.1);
     }
+
     header h1 {
-      font-size: 3em;
-      margin: 0;
-      animation: fadeInDown 1s ease;
+      font-size: 2.2rem;
+      color: #00f0ff;
+      text-shadow: 0 0 6px #00f0ff;
     }
-    /* Стили для каждой карточки (раздела) */
+
     section {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 15px 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
-    section:hover {
-      transform: translateY(-3px);
-      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-    }
+
     section h2 {
-      font-size: 2em;
-      margin-bottom: 15px;
-      cursor: pointer;
-      transition: color 0.3s, transform 0.3s;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ffb347;
+      text-shadow: 0 0 5px #ffaa00;
       display: flex;
       align-items: center;
+      gap: 10px;
     }
-    section h2 i {
-      margin-right: 10px;
+
+    section p, section li {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #e0e0e0;
     }
-    section h2:hover {
-      color: #555;
-      transform: scale(1.05);
+
+    section ul {
+      padding-left: 20px;
     }
-    .section-content {
-      animation: fadeIn 1s ease-in;
-    }
-    /* Абзацы с красивой точкой */
-    .bullet-paragraph {
-      position: relative;
-      padding-left: 25px;
-      text-align: justify;
-      margin-bottom: 10px;
-    }
-    .bullet-paragraph::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-weight: bold;
-      color: #000;
-    }
-    /* Стили для списков */
-    .bullet-list {
-      list-style: none;
-      padding: 0;
-    }
-    .bullet-list li {
-      position: relative;
-      padding-left: 25px;
-      margin-bottom: 8px;
-      text-align: justify;
-    }
-    .bullet-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-weight: bold;
-      color: #000;
-    }
-    .bullet-list li strong {
-      font-weight: bold;
-    }
-    /* Стили для раздела «Организаторы» */
-    .organizer {
-      margin-bottom: 10px;
-    }
-    .organizer p {
-      margin: 4px 0;
-    }
-    /* Раздел «Умельцы организации» - адаптивная карточка с флекс‑контейнером */
-    .persons {
+
+    .member, .admin {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
       gap: 20px;
-      margin-top: 20px;
-    }
-    .person {
-      background: #f9f9f9;
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-      flex: 1 1 calc(33.33% - 20px);
-      max-width: 250px;
-      text-align: center;
-      transition: transform 0.3s;
-    }
-    .person:hover {
-      transform: scale(1.02);
-    }
-    .person img {
-      width: 100%;
-      height: auto;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-    /* Футер */
-    footer {
-      text-align: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
       padding: 20px;
-      background-color: #fff;
-      font-size: 0.9em;
-      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(0,255,255,0.15);
     }
-    footer a {
-      color: #000;
+
+    .member img, .admin img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,255,255,0.3);
+    }
+
+    .icon {
+      color: #00f0ff;
+      text-shadow: 0 0 5px #00f0ff;
+    }
+
+    .join img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.2);
+    }
+
+    a {
+      color: #4cc9f0;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-bottom 0.3s;
     }
-    footer a:hover {
-      border-bottom: 1px solid #000;
+
+    a:hover {
+      text-decoration: underline;
     }
-    /* Класс для скрытия содержимого */
-    .hidden {
-      display: none;
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(10px);
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #aaa;
     }
-    /* Анимации */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Responsive design для мобильных устройств */
-    @media screen and (max-width: 600px) {
-      header h1 {
-        font-size: 2.5em;
-      }
-      section {
-        max-width: 95%;
-        margin: 15px auto;
-        padding: 10px 15px;
-      }
-      section h2 {
-        font-size: 1.5em;
-      }
-      .persons {
+
+    @media screen and (max-width: 768px) {
+      .member, .admin {
         flex-direction: column;
+        text-align: center;
       }
-      .person {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-      .bullet-paragraph, .bullet-list li {
-        padding-left: 20px;
+
+      .member img, .admin img {
+        margin-bottom: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Верхний заголовок сайта -->
   <header>
-    <h1>Содружество Развивающихся Умельцев</h1>
+    <h1><i class="fas fa-atom icon"></i> Содружество Развивающихся Умельцев</h1>
   </header>
-  
-  <!-- Раздел 1: Что такое С.Р.У.? -->
-  <section id="section1">
-    <h2 class="toggle-header"><i class="fas fa-circle-question"></i> Что такое С.Р.У.?</h2>
-    <div class="section-content">
-      <p class="bullet-paragraph">
-       С.Р.У. (Содружество Развивающихся Умельцев) — это объединение талантливых и целеустремлённых профессионалов, стремящихся к постоянному совершенствованию и инновационному развитию. Организация создана для того, чтобы служить платформой обмена знаниями, опытом и передовыми подходами, способствующими как индивидуальному, так и коллективному росту в области науки, искусства, технологий и ремёсел.
-      </p>
-      <p class="bullet-paragraph">
-        В основе деятельности С.Р.У. лежит принцип междисциплинарного сотрудничества, направленный на формирование интегрированной системы поддержки творческих инициатив и профессиональных компетенций. Организация реализует широкий спектр инициатив, среди которых образовательные программы, специализированные мастер-классы, научные исследования, круглые столы и конференции. Такой системный подход позволяет участникам не только обмениваться знаниями, но и активно внедрять инновационные решения для разрешения сложных задач современности.
-      <p class="bullet-paragraph">
- С.Р.У. выступает в роли авторитетного центра, посвящённого развитию творческого потенциала и профессиональных навыков. Организация стремится ко взаимодействию на региональном и национальном уровнях, что способствует выстраиванию устойчивых партнёрских связей с государственными, коммерческими и образовательными структурами. Эта синергия усиливает эффективность реализуемых проектов и позволяет создавать целостные условия для всестороннего развития участников сообщества.
-      </p>
-		  <p class="bullet-paragraph">
-       Кроме того, С.Р.У. активно поддерживает публикации в профильных изданиях, организацию международных обменов и участие в крупных культурно-научных мероприятиях, что обеспечивает высокий уровень профессионального признания и вдохновляет на дальнейшие свершения. Залог успеха организации — приверженность ценностям сотрудничества, взаимопомощи и ответственности в осуществлении общественно значимых инициатив.
-      </p>
-		  <p class="bullet-paragraph">
-       Таким образом, С.Р.У. не просто объединяет людей с высокими амбициями, но и выступает мощным двигателем социальных и культурных изменений, способствующим формированию устойчивой среды для развития талантов и реализации инновационных проектов.
-      </p>
-    </div>
+
+  <section>
+    <h2><i class="fas fa-question-circle icon"></i> Что такое С.Р.У.?</h2>
+    <p>С.Р.У. (Содружество Развивающихся Умельцев) — это объединение талантливых и целеустремлённых профессионалов, стремящихся к постоянному совершенствованию и инновационному развитию. Организация создана для того, чтобы служить платформой обмена знаниями, опытом и передовыми подходами, способствующими как индивидуальному, так и коллективному росту в области науки, искусства, технологий и ремёсел.</p>
+    <p>В основе деятельности С.Р.У. лежит принцип междисциплинарного сотрудничества, направленный на формирование интегрированной системы поддержки творческих инициатив и профессиональных компетенций. Организация реализует широкий спектр инициатив, среди которых образовательные программы, специализированные мастер-классы, научные исследования, круглые столы и конференции. Такой системный подход позволяет участникам не только обмениваться знаниями, но и активно внедрять инновационные решения для разрешения сложных задач современности.</p>
+	<p>С.Р.У. выступает в роли авторитетного центра, посвящённого развитию творческого потенциала и профессиональных навыков. Организация стремится ко взаимодействию на региональном и национальном уровнях, что способствует выстраиванию устойчивых партнёрских связей с государственными, коммерческими и образовательными структурами. Эта синергия усиливает эффективность реализуемых проектов и позволяет создавать целостные условия для всестороннего развития участников сообщества.</p>
+    <p>Кроме того, С.Р.У. активно поддерживает публикации в профильных изданиях, организацию международных обменов и участие в крупных культурно-научных мероприятиях, что обеспечивает высокий уровень профессионального признания и вдохновляет на дальнейшие свершения. Залог успеха организации — приверженность ценностям сотрудничества, взаимопомощи и ответственности в осуществлении общественно значимых инициатив.</p>
+    <p>Таким образом, С.Р.У. не просто объединяет людей с высокими амбициями, но и выступает мощным двигателем социальных и культурных изменений, способствующим формированию устойчивой среды для развития талантов и реализации инновационных проектов.</p>
   </section>
-
-  <!-- Раздел 2: Самостоятельность умельцев -->
-  <section id="section2">
-    <h2 class="toggle-header"><i class="fas fa-brain"></i> Самостоятельность умельцев</h2>
-    <div class="section-content">
-      <p class="bullet-paragraph">
-      Самостоятельность умельцев является важнейшей основой профессионального роста и эффективности каждого участника С.Р.У. Она проявляется в способности тщательно анализировать поставленные задачи, разрабатывать продуманные и обоснованные решения, а также реализовывать идеи, опираясь на собственные знания и практический опыт. Умельцы, принимая самостоятельные решения, демонстрируют ответственное отношение к результатам своей деятельности, подтверждая свою компетентность и преданность высоким стандартам выполнения работы.
-      </p>
-      <p class="bullet-paragraph">
-        В рамках Содружества Развивающихся Умельцев такая самостоятельность способствует формированию сплочённого коллектива, где индивидуальные подходы и решения каждого участника оказывают поддержку общему развитию сообщества. Независимость в мышлении и действиях не только помогает принимать обдуманные решения, но и служит фундаментом для эффективного взаимодействия, позволяющего объединять разные точки зрения для достижения общего успеха без излишних грандиозных заявлений. Дополнительно, этот подход способствует развитию атмосферы доверия и профессиональной свободы, где каждый может внести свой уникальный вклад в общее дело, способствуя тем самым стабильному и последовательному прогрессу.
-      </p>
-    </div>
-  </section>
-
-  <!-- Раздел 3: Правила С.Р.У. -->
-  <section id="section3">
-    <h2 class="toggle-header"><i class="fas fa-scale-balanced"></i> Правила С.Р.У.</h2>
-    <div class="section-content">
-      <ul class="bullet-list">
-        <li><strong>Постоянное развитие:</strong>Каждый участник стремится к непрерывному личностному и профессиональному росту, демонстрируя достижения и делясь приобретёнными знаниями с другими. Это положение создает прочную основу для системного развития членов сообщества.</li>
-        <li><strong>Коллективное сотрудничество:</strong> Участники объединяют свои компетенции и таланты для решения поставленных задач. Конструктивное взаимодействие и поддержка друг друга позволяют эффективно реализовывать проекты, обеспечивая высокий уровень координации в рамках организации.</li>
-        <li><strong>Уважение к разнообразию:</strong> Каждый член С.Р.У. ценится за свой уникальный опыт и профессиональный вклад. Независимо от различий в подходах и взглядах, участники обязуются поддерживать атмосферу взаимного уважения, создавая условия для комфортного и плодотворного общения.</li>
-        <li><strong>Инновации и креативность:</strong> Организация поощряет внедрение новых идей и современных технологий. Каждый участник имеет возможность проявлять инициативу и предлагать нестандартные решения, способствующие совершенствованию рабочих процессов.</li>
-        <li><strong>Ответственность и честность:</strong> Члены организации обязанны строго соблюдать этические нормы и нести ответственность за свои действия. Честное и прозрачное ведение профессиональной деятельности является краеугольным камнем репутации С.Р.У.</li>
-        <li><strong>Обмен знаниями:</strong> Открытость и доступ к образовательным материалам, мастер-классам и исследованиям создают условия для постоянного профессионального обмена опытом. Это способствует формированию сообщества, ориентированного на самообразование и коллективный прогресс.</li>
-        <li><strong>Пропаганда ценностей:</strong> С.Р.У. поддерживает идеи взаимопомощи, равноправия и устойчивого развития. Распространение этих ценностей не только укрепляет коллектив, но и вносит вклад в формирование стабильной общественной среды.</li>
-        <li><strong>Поддержка талантов:</strong> Особое внимание уделяется развитию профессиональных навыков каждого участника. Независимо от исходного уровня подготовки, каждый член получает возможность для роста и профессиональной реализации.</li>
-        <li><strong>Объемный вклад в развитие общества:</strong>Организация стремится к практическому влиянию на развитие профессиональной среды, предлагая реалистичные и обоснованные решения актуальных задач. Такой подход обеспечивает устойчивое развитие без излишней помпезности.</li>
-        <li><strong>Празднование успехов:</strong> Достижения участников анализируются и отмечаются с целью повышения мотивации и укрепления командного духа. Каждое признание успеха становится стимулом для дальнейшей продуктивной деятельности.</li>
-		  <li><strong>Взаимное уважение и корректное общение:</strong> Обязательным элементом внутриорганизационного общения является строгий отказ от любых форм хамства, оскорблений и уничижительных высказываний. Конструктивная критика допускается лишь при условии соблюдения культурных норм и уважительного отношения к собеседнику.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Раздел 4: Должности С.Р.У. -->
-  <section id="section4">
-    <h2 class="toggle-header"><i class="fas fa-sitemap"></i> Должности С.Р.У.</h2>
-    <div class="section-content">
-      <p class="bullet-paragraph">
-        Ученик С.Р.У. – это участник, находящийся на начальном этапе профессионального и творческого развития. Он активно осваивает принципы деятельности организации, участвует в образовательных программах и мастер-классах, собирает опыт и знания для дальнейшего самостоятельного применения.
-      </p>
-      <p class="bullet-paragraph">
-      Сотрудник С.Р.У. – это надежный и ответственный участник, активно вовлеченный в реализацию проектов организации. Он применяет свой профессиональный опыт и знания для совершенствования процессов, организует взаимодействие между членами коллектива и способствует достижению общих целей.
-      </p>
-		<p class="bullet-paragraph">
-        Пресс-Секретарь С.Р.У. – это официальный представитель организации в сфере коммуникаций. Он отвечает за формирование и передачу актуальной и достоверной информации о деятельности С.Р.У., обеспечивает взаимодействие с представителями медиа и другими заинтересованными структурами.
-      </p>
-		<p class="bullet-paragraph">
-        Юрист С.Р.У. – это специалист, отвечающий за правовую поддержку всех инициатив организации. Он обеспечивает соответствие деятельности С.Р.У. законодательным требованиям, анализирует правовые риски и предоставляет экспертные консультации для устойчивой и законной деятельности сообщества.
-      </p>
-    </div>
-  </section>
-
-  <!-- Раздел 5: Музей наследия С.Р.У. -->
-  <section id="section5">
-    <h2 class="toggle-header"><i class="fas fa-landmark"></i> Музей наследия С.Р.У.</h2>
-    <div class="section-content">
-      <ul class="bullet-list">
-        <li><strong>Архив событий:</strong> Хронология значимых мероприятий, проектов и этапов развития организации.</li>
-        <li><strong>Галерея вдохновляющих личностей:</strong> Истории участников, которые внесли большой вклад в развитие С.Р.У.</li>
-        <li><strong>Экспонаты творчества:</strong> Лучшие работы и проекты умельцев, представленные в виде интерактивных или мультимедийных экспонатов.</li>
-        <li><strong>Интерактивные экскурсии:</strong> Возможность для новых участников и гостей погрузиться в атмосферу сообщества, изучив его ценности и культуру.</li>
-        <li><strong>Учебный уголок:</strong> Ресурсы для изучения стратегии успеха и вдохновения, которые были ключевыми для великих достижений С.Р.У.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Раздел 6: Идеи С.Р.У. -->
-  <section id="section6">
-    <h2 class="toggle-header"><i class="fas fa-lightbulb"></i> Идеи С.Р.У.</h2>
-    <div class="section-content">
-      <ul class="bullet-list">
-        <li><strong>Генератор проектов:</strong> Участники имеют возможность предлагать свои идеи, которые в дальнейшем могут трансформироваться в самостоятельные проекты. Такой механизм позволяет выявлять перспективные инициативы и создавать условия для их дальнейшей проработки.</li>
-        <li><strong>Мастерские брейнсторминга:</strong> Регулярно проводимые сессии совместного поиска решений создают творческое пространство для обмена идеями и поиска новых подходов. Встречи организуются в режиме открытого диалога, что способствует выработке конструктивных предложений и эффективному решению поставленных задач.</li>
-        <li><strong>Наставники и эксперты:</strong> В организации работают опытные специалисты, оказывающие поддержку участникам на всех этапах разработки проектов. Их консультации способствуют улучшению концепций, обеспечивая профессиональное сопровождение идей до стадии реализации.</li>
-        <li><strong>Платформа обратной связи:</strong> Создана специализированная система для сбора мнений и предложений от членов сообщества. Обратная связь помогает корректировать и совершенствовать инициативы, а также обеспечивать прозрачность и объективность в оценке представленных идей.</li>
-        <li><strong>Фонд поддержки стартапов:</strong> Для реализации наиболее перспективных проектов предусмотрены ресурсы и гранты, направленные на поддержку стартапов внутри организации. Этот инструмент способствует превращению инновационных идей в реальные и стабильные проекты, обеспечивая их дальнейшее развитие.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Раздел 7: Администраторы -->
-  <section id="section9">
-    <h2 class="toggle-header"><i class="fas fa-user-tie"></i> Администрация</h2>
-    <div class="section-content">
-      <div class="organizer">
-        <p><strong>Паша -</strong> является директором и основателем организации С.Р.У. Он осуществляет стратегическое управление деятельностью сообщества, определяет ключевые направления политики и разрабатывает систему организационных принципов. Под его руководством реализуются образовательные инициативы и проекты, направленные на повышение профессиональных стандартов участников.</p>
-      </div>
-      <div class="organizer">
-        <p><strong>Копилот -</strong> занимает должность главного помощника директора. Он отвечает за оперативное взаимодействие между различными подразделениями организации, контролирует выполнение текущих задач и способствует оптимизации внутренних процессов. Его системный подход и техническая компетентность обеспечивают стабильность и своевременность реализации стратегических целей.</p>
-      </div>
-      <div class="organizer">
-        <p><strong>ЧатГПТ -</strong> входит в число основателей С.Р.У. и несёт ответственность за разработку, внедрение и сопровождение цифровой инфраструктуры организации, включая сайт и сопутствующие информационные системы. Его деятельность направлена на обеспечение качественного обмена информацией и поддержание высоких стандартов работы электронных сервисов, что способствует совершенствованию коммуникационных процессов.</p>
-      </div>
-      <div class="organizer">
-        <p><strong>Джегги бот -</strong> отвечает за техническое сопровождение и контроль функционирования Discord-сервера. Он осуществляет мониторинг информационных потоков, обеспечивает оперативное решение технических вопросов и участвует в поддержании интерактивной среды для всех участников сообщества. Его работа играет важную роль в поддержании прозрачности и стабильности коммуникаций внутри организации.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Раздел 8: Умельцы организации (адаптивный флекс‑контейнер) -->
-  <section id="section10">
-    <h2 class="toggle-header"><i class="fas fa-users"></i> Умельцы организации</h2>
-    <div class="section-content persons">
-      <div class="person">
-        <img src="https://www.kkhashi.com/blogs/wp-content/themes/sango-blog/img/common/author-default-thumbnail.webp" alt="Паша">
-        <p><strong>Паша -</strong> занимает должность директора организации и является активным участником С.Р.У. Он осуществляет руководство деятельностью сообщества, организует образовательные программы и способствует продвижению инициатив, направленных на повышение профессиональных стандартов. Его участие позволяет постоянно совершенствовать управленческие и организационные компетенции.</p>
-      </div>
-      <div class="person">
-        <img src="https://www.kkhashi.com/blogs/wp-content/themes/sango-blog/img/common/author-default-thumbnail.webp" alt="Ваня">
-        <p><strong>Ваня -</strong> один из участников С.Р.У., отвечающий за оперативную координацию рабочих процессов. Он демонстрирует высокую способность к систематизации и оптимизации деятельности внутри организации. В настоящее время, обучаясь и принимая участие в реализации первых проектов, Ваня нацелен на дальнейшее развитие профессиональных навыков в сфере программирования.</p>
-      </div>
-      <div class="person">
-        <img src="https://th.bing.com/th/id/OIP.Dd389bqu8-M4c2KPDd4UIwHaGz?r=0&pid=ImgDet&w=185&h=170&c=7" alt="Полина">
-        <p><strong>Полина -</strong> является специалистом по аналитике, способной систематически выявлять закономерности и превращать полученные данные в аргументированные решения в интересах организации. В 24 года она совмещает обязанности юриста с активным участием в образовательных программах С.Р.У., что способствует её профессиональному развитию и укреплению правовой базы сообщества.</p>
-      </div>
-      <div class="person">
-        <img src="https://th.bing.com/th/id/OIP.Dd389bqu8-M4c2KPDd4UIwHaGz?r=0&pid=ImgDet&w=185&h=170&c=7" alt="Галина">
-        <p><strong>Галина -</strong> квалифицированный участник, демонстрирующий высокий уровень точности и аналитической проницательности при решении комплексных задач. Её системный подход и способность разрабатывать нестандартные решения положительно сказываются на эффективности реализации проектов внутри организации. Системное накопление опыта позволяет Галине стабильно повышать свою профессиональную квалификацию.</p>
-      </div>
-      <div class="person">
-        <img src="https://www.kkhashi.com/blogs/wp-content/themes/sango-blog/img/common/author-default-thumbnail.webp" alt="Глеб">
-        <p><strong>Глеб -</strong> начинающий участник С.Р.У., ориентированный на разработку инновационных механизмов и внедрение новых методов в рабочие процессы. Его творческий подход сочетается с готовностью принимать конструктивную критику, что способствует его профессиональному росту. Под наставничеством опытных членов организации Глеб демонстрирует потенциал для дальнейшей интеграции в команду и системного развития своих компетенций.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Раздел 9: Как присоединиться к нам? -->
-  <section id="section11">
-    <h2 class="toggle-header"><i class="fas fa-door-open"></i> Как присоединиться к нам?</h2>
-    <div class="section-content">
-      <p>
-        Хочешь присоединиться к нашей организации, но не знаешь как?<br>
-        <a href="https://comwebsite.github.io/form-sru-vst/" target="_blank">Тогда заполни этот бланк!</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Раздел 10: Контактная нформация -->
-  <section id="section12">
-    <h2 class="toggle-header"><i class="fas fa-envelope"></i> Контактная нформация</h2>
-    <div class="section-content">
-      <p>
-        Vertex Dynamics: <a href="https://comwebsite.github.io/vertex-dynamics/" target="_blank">наша корпорация</a><br>
-        Discord server: <a href="https://discord.gg/JgG74y5h4G" target="_blank">присоединиться к серверу</a><br>
-        Электронная почта организации: <a href="mailto:communityofdevelopingcraftsmen@gmail.com">communityofdevelopingcraftsmen@gmail.com</a><br>
-        Копилот: <a href="https://copilot.microsoft.com/?setlang=ru" target="_blank">copilot.microsoft.com</a><br>
-        ЧатГПТ: <a href="https://openai.com/chatgpt/overview/" target="_blank">openai.com/chatgpt</a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Футер -->
-  <footer>
-    <p>© Vertex Dynamics 2025, Inc. Содружество Развивающихся Умельцев 2024-2025. Все права защищены.<br>
-    Электронная почта для связи: <a href="mailto:communityofdevelopingcraftsmen@gmail.com">communityofdevelopingcraftsmen@gmail.com</a></p>
-  </footer>
-
-  <!-- JavaScript для сворачивания/разворачивания содержимого разделов -->
-  <script>
-    const sections = document.querySelectorAll("section");
-    sections.forEach((section) => {
-      const header = section.querySelector(".toggle-header");
-      const content = section.querySelector(".section-content");
-      header.addEventListener("click", () => {
-        content.classList.toggle("hidden");
-      });
-    });
-  </script>
-</body>
+  <section>
+  <h2><i class="fas fa-user-gear icon"></i> Самостоятельность умельцев</h2>
+  <p>Самостоятельность умельцев является важнейшей основой профессионального роста и эффективности каждого участника С.Р.У. Она проявляется в способности тщательно анализировать поставленные задачи, разрабатывать продуманные и обоснованные решения, а также реализовывать идеи, опираясь на собственные знания и практический опыт. Умельцы, принимая самостоятельные решения, демонстрируют ответственное отношение к результатам своей деятельности, подтверждая свою компетентность и преданность высоким стандартам выполнения работы. </p>
+	  <p>В рамках Содружества Развивающихся Умельцев такая самостоятельность способствует формированию сплочённого коллектива, где индивидуальные подходы и решения каждого участника оказывают поддержку общему развитию сообщества. Независимость в мышлении и действиях не только помогает принимать обдуманные решения, но и служит фундаментом для эффективного взаимодействия, позволяющего объединять разные точки зрения для достижения общего успеха без излишних грандиозных заявлений. Дополнительно, этот подход способствует развитию атмосферы доверия и профессиональной свободы, где каждый может внести свой уникальный вклад в общее дело, способствуя тем самым стабильному и последовательному прогрессу. </p>
+</section><section>
+  <h2><i class="fas fa-gavel icon"></i> Правила С.Р.У.</h2>
+  <ul>
+    <li><strong>Постоянное развитие:</strong> Каждый участник стремится к непрерывному личностному и профессиональному росту, демонстрируя достижения и делясь приобретёнными знаниями с другими. Это положение создает прочную основу для системного развития членов сообщества.</li>
+    <li><strong>Коллективное сотрудничество:</strong> Участники объединяют свои компетенции и таланты для решения поставленных задач. Конструктивное взаимодействие и поддержка друг друга позволяют эффективно реализовывать проекты, обеспечивая высокий уровень координации в рамках организации.</li>
+    <li><strong>Уважение к разнообразию:</strong> Каждый член С.Р.У. ценится за свой уникальный опыт и профессиональный вклад. Независимо от различий в подходах и взглядах, участники обязуются поддерживать атмосферу взаимного уважения, создавая условия для комфортного и плодотворного общения.</li>
+    <li><strong>Инновации и креативность:</strong> Организация поощряет внедрение новых идей и современных технологий. Каждый участник имеет возможность проявлять инициативу и предлагать нестандартные решения, способствующие совершенствованию рабочих процессов.</li>
+    <li><strong>Ответственность и честность:</strong> Члены организации обязанны строго соблюдать этические нормы и нести ответственность за свои действия. Честное и прозрачное ведение профессиональной деятельности является краеугольным камнем репутации С.Р.У.</li>
+    <li><strong>Обмен знаниями:</strong> Открытость и доступ к образовательным материалам, мастер-классам и исследованиям создают условия для постоянного профессионального обмена опытом. Это способствует формированию сообщества, ориентированного на самообразование и коллективный прогресс.</li>
+    <li><strong>Пропаганда ценностей:</strong> С.Р.У. поддерживает идеи взаимопомощи, равноправия и устойчивого развития. Распространение этих ценностей не только укрепляет коллектив, но и вносит вклад в формирование стабильной общественной среды.</li>
+    <li><strong>Поддержка талантов:</strong> Особое внимание уделяется развитию профессиональных навыков каждого участника. Независимо от исходного уровня подготовки, каждый член получает возможность для роста и профессиональной реализации.</li>
+    <li><strong>Объёмный вклад в развитие общества:</strong> Организация стремится к практическому влиянию на развитие профессиональной среды, предлагая реалистичные и обоснованные решения актуальных задач. Такой подход обеспечивает устойчивое развитие без излишней помпезности.</li>
+    <li><strong>Празднование успехов:</strong> Достижения участников анализируются и отмечаются с целью повышения мотивации и укрепления командного духа. Каждое признание успеха становится стимулом для дальнейшей продуктивной деятельности.</li>
+    <li><strong>Взаимное уважение и корректное общение:</strong> Обязательным элементом внутриорганизационного общения является строгий отказ от любых форм хамства, оскорблений и уничижительных высказываний. Конструктивная критика допускается лишь при условии соблюдения культурных норм и уважительного отношения к собеседнику.</li>
+  </ul>
+</section><section>
+  <h2><i class="fas fa-user-tie icon"></i> Должности С.Р.У.</h2>
+  <div class="member">
+    <img src="data:image/png;base64,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" alt="Ученик">
+    <p><strong>Ученик С.Р.У.</strong> – это участник, находящийся на начальном этапе профессионального и творческого развития. Он активно осваивает принципы деятельности организации, участвует в образовательных программах и мастер-классах, собирает опыт и знания для дальнейшего самостоятельного применения. </p>
+  </div>
+  <div class="member">
+    <img src="data:image/png;base64,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" alt="Сотрудник">
+    <p><strong>Сотрудник С.Р.У.</strong> – это надежный и ответственный участник, активно вовлеченный в реализацию проектов организации. Он применяет свой профессиональный опыт и знания для совершенствования процессов, организует взаимодействие между членами коллектива и способствует достижению общих целей. </p>
+  </div>
+  <div class="member">
+    <img src="data:image/png;base64,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" alt="Пресс-Секретарь">
+    <p><strong>Пресс-Секретарь С.Р.У.</strong> – это официальный представитель организации в сфере коммуникаций. Он отвечает за формирование и передачу актуальной и достоверной информации о деятельности С.Р.У., обеспечивает взаимодействие с представителями медиа и другими заинтересованными структурами. </p>
+  </div>
+  <div class="member">
+    <img src="data:image/png;base64,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" alt="Юрист">
+    <p><strong>Юрист С.Р.У.</strong> – это специалист, отвечающий за правовую поддержку всех инициатив организации. Он обеспечивает соответствие деятельности С.Р.У. законодательным требованиям, анализирует правовые риски и предоставляет экспертные консультации для устойчивой и законной деятельности сообщества. </p>
+  </div>
+</section><section>
+  <h2><i class="fas fa-landmark icon"></i> Музей наследия С.Р.У.</h2>
+  <ul>
+    <li><strong>Архив событий:</strong> Хронология значимых мероприятий, проектов и этапов развития организации.</li>
+    <li><strong>Галерея вдохновляющих личностей:</strong> Истории участников, которые внесли вклад в развитие С.Р.У.</li>
+    <li><strong>Экспонаты творчества:</strong> Лучшие работы и проекты умельцев, представленные как интерактивные экспонаты.</li>
+    <li><strong>Интерактивные экскурсии:</strong> Возможность погрузиться в атмосферу сообщества, изучив его ценности и культуру.</li>
+    <li><strong>Учебный уголок:</strong> Ресурсы для изучения стратегии успеха и вдохновения от выдающихся достижений.</li>
+  </ul>
+</section><section>
+  <h2><i class="fas fa-lightbulb icon"></i> Идеи С.Р.У.</h2>
+  <ul>
+    <li><strong>Генератор проектов:</strong> Возможность предлагать идеи, которые трансформируются в самостоятельные проекты.</li>
+    <li><strong>Мастерские брейнсторминга:</strong> Совместный поиск решений и открытые диалоги.</li>
+    <li><strong>Наставники и эксперты:</strong> Поддержка от опытных специалистов на всех этапах разработки проектов.</li>
+    <li><strong>Платформа обратной связи:</strong> Система сбора мнений и предложений от членов сообщества.</li>
+    <li><strong>Фонд поддержки стартапов:</strong> Ресурсы и гранты для реализации перспективных проектов.</li>
+  </ul>
+</section>
+<section>
+  <h2><i class="fas fa-users-cog icon"></i> Администрация</h2>
+  <div class="admin">
+    <img src="https://www.kkhashi.com/blogs/wp-content/themes/sango-blog/img/common/author-default-thumbnail.webp" alt="Паша">
+    <p><strong>Паша</strong> — является директором и основателем организации С.Р.У. Он осуществляет стратегическое управление деятельностью сообщества, определяет ключевые направления политики и разрабатывает систему организационных принципов. Под его руководством реализуются образовательные инициативы и проекты, направленные на повышение профессиональных стандартов участников.</p>
+  </div>
+  <div class="admin">
+    <img src="data:image/jpeg;base64,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" alt="Копилот">
+    <p><strong>Копилот</strong> — занимает должность главного помощника директора. Он отвечает за оперативное взаимодействие между различными подразделениями организации, контролирует выполнение текущих задач и способствует оптимизации внутренних процессов. Его системный подход и техническая компетентность обеспечивают стабильность и своевременность реализации стратегических целей.</p>
+  </div>
+  <div class="admin">
+    <img src="data:image/png;base64,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" alt="ЧатГПТ">
+    <p><strong>ЧатГПТ</strong> — ходит в число основателей С.Р.У. и несёт ответственность за разработку, внедрение и сопровождение цифровой инфраструктуры организации, включая сайт и сопутствующие информационные системы. Его деятельность направлена на обеспечение качественного обмена информацией и поддержание высоких стандартов работы электронных сервисов, что способствует совершенствованию коммуникационных процессов.</p>
+  </div>
+  <div class="admin">
+    <img src="data:image/png;base64,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" alt="Джегги бот">
+    <p><strong>Джегги бот</strong> — отвечает за техническое сопровождение и контроль функционирования Discord-сервера. Он осуществляет мониторинг информационных потоков, обеспечивает оперативное решение технических вопросов и участвует в поддержании интерактивной среды для всех участников сообщества. Его работа играет важную роль в поддержании прозрачности и стабильности коммуникаций внутри организации.</p>
+  </div>
+</section><section>
+  <h2><i class="fas fa-people-group icon"></i> Умельцы организации</h2>
+  <div class="member">
+    <img src="https://www.kkhashi.com/blogs/wp-content/themes/sango-blog/img/common/author-default-thumbnail.webp" alt="Паша">
+    <p><strong>Паша</strong> — занимает должность директора организации и является активным участником С.Р.У. Он осуществляет руководство деятельностью сообщества, организует образовательные программы и способствует продвижению инициатив, направленных на повышение профессиональных стандартов. Его участие позволяет постоянно совершенствовать управленческие и организационные компетенции.</p>
+  </div>
+  <div class="member">
+    <img src="https://www.kkhashi.com/blogs/wp-content/themes/sango-blog/img/common/author-default-thumbnail.webp" alt="Ваня">
+    <p><strong>Ваня</strong> — один из участников С.Р.У., отвечающий за оперативную координацию рабочих процессов. Он демонстрирует высокую способность к систематизации и оптимизации деятельности внутри организации. В настоящее время, обучаясь и принимая участие в реализации первых проектов, Ваня нацелен на дальнейшее развитие профессиональных навыков в сфере программирования.</p>
+  </div>
+  <div class="member">
+    <img src="https://th.bing.com/th/id/OIP.Dd389bqu8-M4c2KPDd4UIwHaGz?r=0&pid=ImgDet&w=185&h=170&c=7" alt="Полина">
+    <p><strong>Полина</strong> — является специалистом по аналитике, способной систематически выявлять закономерности и превращать полученные данные в аргументированные решения в интересах организации. В 24 года она совмещает обязанности юриста с активным участием в образовательных программах С.Р.У., что способствует её профессиональному развитию и укреплению правовой базы сообщества.</p>
+  </div>
+  <div class="member">
+    <img src="https://th.bing.com/th/id/OIP.Dd389bqu8-M4c2KPDd4UIwHaGz?r=0&pid=ImgDet&w=185&h=170&c=7" alt="Галина">
+    <p><strong>Галина</strong> — квалифицированный участник, демонстрирующий высокий уровень точности и аналитической проницательности при решении комплексных задач. Её системный подход и способность разрабатывать нестандартные решения положительно сказываются на эффективности реализации проектов внутри организации. Системное накопление опыта позволяет Галине стабильно повышать свою профессиональную квалификацию.</p>
+  </div>
+  <div class="member">
+    <img src="https://www.kkhashi.com/blogs/wp-content/themes/sango-blog/img/common/author-default-thumbnail.webp" alt="Глеб">
+    <p><strong>Глеб</strong> — начинающий участник С.Р.У., ориентированный на разработку инновационных механизмов и внедрение новых методов в рабочие процессы. Его творческий подход сочетается с готовностью принимать конструктивную критику, что способствует его профессиональному росту. Под наставничеством опытных членов организации Глеб демонстрирует потенциал для дальнейшей интеграции в команду и системного развития своих компетенций.</p>
+  </div>
+</section><section class="join">
+  <h2><i class="fas fa-user-plus icon"></i> Как присоединиться к нам?</h2>
+  <p>Хочешь присоединиться к нашей организации, но не знаешь как? <a href="https://comwebsite.github.io/form-sru-vst/" target="_blank">Тогда заполни этот бланк!</a></p>
+  <a href="https://comwebsite.github.io/form-sru-vst/" target="_blank">
+    <img src="https://bing.com/th/id/BCO.53e3e71b-7e83-4a8f-8e10-3d09d40a7506.png" alt="Join us">
+  </a>
+</section><section>
+  <h2><i class="fas fa-envelope icon"></i> Контактная информация</h2>
+  <li><strong>Vertex Dynamics:</strong> <a href="https://comwebsite.github.io/vertex-dynamics/" target="_blank">vertexdynamics.com</a></li>
+  <li><strong>Discord server:</strong> <a href="https://discord.gg/JgG74y5h4G" target="_blank">Присоединиться к серверу</a></li>
+  <li><strong>Электронная почта организации:</strong> <a href="mailto:communityofdevelopingcraftsmen@gmail.com">communityofdevelopingcraftsmen@gmail.com</a></li>
+  <li><strong>Копилот:</strong> <a href="https://copilot.microsoft.com" target="_blank">copilot.microsoft.com</a></li>
+  <li><strong>ЧатГПТ:</strong> <a href="https://openai.com/chatgpt" target="_blank">openai.com/chatgpt</a></li>
+</ul>
+</section><footer>
+  <p>© Vertex Dynamics 2025, Inc. Содружество Развивающихся Умельцев 2024–2025. Все права защищены.</p>
+  <p>Электронная почта для связи: communityofdevelopingcraftsmen@gmail.com</p>
+</footer>
+	</body>
 </html>
